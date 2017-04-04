@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/bradley219/migrate/driver"
+	"github.com/bradley219/migrate/file"
+	"github.com/bradley219/migrate/migrate/direction"
 	"github.com/gocql/gocql"
-	"github.com/mattes/migrate/driver"
-	"github.com/mattes/migrate/file"
-	"github.com/mattes/migrate/migrate/direction"
 )
 
 // Driver implements migrate Driver interface

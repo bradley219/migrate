@@ -1,2 +1,5 @@
 .DS_Store
 test.db
+bin
+src
+pkg

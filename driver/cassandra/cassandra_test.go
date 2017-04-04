@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/bradley219/migrate/file"
+	pipep "github.com/bradley219/migrate/ipe"
+	"github.com/bradley219/migrate/migrate/direction"
 	"github.com/gocql/gocql"
-	"github.com/mattes/migrate/file"
-	"github.com/mattes/migrate/migrate/direction"
-	pipep "github.com/mattes/migrate/pipe"
 )
 
 func TestMigrate(t *testing.T) {

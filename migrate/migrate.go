@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mattes/migrate/driver"
-	"github.com/mattes/migrate/file"
-	"github.com/mattes/migrate/migrate/direction"
-	pipep "github.com/mattes/migrate/pipe"
+	"github.com/bradley219/migrate/driver"
+	"github.com/bradley219/migrate/file"
+	"github.com/bradley219/migrate/migrate/direction"
+	pipep "github.com/bradley219/migrate/pipe"
 )
 
 // Up applies all available migrations
