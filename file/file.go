@@ -110,7 +110,7 @@ func (mf *MigrationFiles) ToSpecific(version uint64, targetVersion uint64) (File
 	} else if targetVersion < version {
 		d = direction.Down
 	} else {
-		return nil, nil
+		return nil, nil // versions match
 	}
 
 	files := make(Files, 0)
@@ -120,6 +120,9 @@ func (mf *MigrationFiles) ToSpecific(version uint64, targetVersion uint64) (File
 		} else if d == direction.Down && migrationFile.DownFile != nil && migrationFile.Version <= version && migrationFile.Version > targetVersion {
 			files = append(files, *migrationFile.DownFile)
 		}
+	}
+	if len(files) == 0 {
+		return nil, fmt.Errorf("insufficient migration files to migrate to version %v", targetVersion)
 	}
 	return files, nil
 }
