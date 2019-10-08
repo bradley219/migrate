@@ -4,6 +4,7 @@ package driver
 import (
 	"fmt"
 	neturl "net/url" // alias to allow `url string` func signature in New
+	"strings"
 
 	"github.com/bradley219/migrate/file"
 )
@@ -36,16 +37,14 @@ type Driver interface {
 
 // New returns Driver and calls Initialize on it
 func New(url string) (Driver, error) {
-	u, err := neturl.Parse(url)
-	if err != nil {
-		return nil, err
-	}
+	i := strings.Index(url, ":")
+	scheme := url[0:i]
 
-	d := GetDriver(u.Scheme)
+	d := GetDriver(scheme)
 	if d == nil {
-		return nil, fmt.Errorf("Driver '%s' not found", u.Scheme)
+		return nil, fmt.Errorf("Driver '%s' not found", scheme)
 	}
-	verifyFilenameExtension(u.Scheme, d)
+	verifyFilenameExtension(scheme, d)
 	if err := d.Initialize(url); err != nil {
 		return nil, err
 	}
